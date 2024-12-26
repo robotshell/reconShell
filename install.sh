@@ -13,9 +13,22 @@ printf "##### Welcome to the MagicRecon dependency installer #####\n"
 printf "##########################################################\n\n${NORMAL}"
 
 sudo apt-get -y update
+sudo apt-get -y full-upgrade
+sudo apt-get -y autoremove
 
 printf "${BOLD}${MAGENTA}Installing programming languages and essential packages\n${NORMAL}"
-sudo apt-get install -y python3-pip dnspython golang cargo html2text whatweb theharvester nmap dirsearch sqlmap cargo subjack
+sudo apt-get install -y python3-pip 
+sudo apt-get install -y dnspython 
+sudo apt-get install -y golang
+sudo apt-get install -y cargo
+sudo apt-get install -y html2text
+sudo apt-get install -y whatweb
+sudo apt-get install -y theharvester
+sudo apt-get install -y nmap
+sudo apt-get install -y dirsearch
+sudo apt-get install -y sqlmap
+sudo apt-get install -y cargo
+sudo apt-get install -y subjack
 
 printf "${BOLD}${MAGENTA}Cloning repositories and installing dependencies\n${NORMAL}"
 cd $HOME
@@ -23,20 +36,20 @@ mkdir -p tools
 cd tools
 
 declare -A REPOS=(
-  ["Asnlookup"]="https://github.com/yassineaboukir/Asnlookup"
-  ["ssl-checker"]="https://github.com/narbehaj/ssl-checker"
-  ["cloud_enum"]="https://github.com/initstring/cloud_enum"
-  ["GitDorker"]="https://github.com/obheda12/GitDorker"
+  ["Asnlookup"]="https://github.com/yassineaboukir/Asnlookup.git"
+  ["ssl-checker"]="https://github.com/narbehaj/ssl-checker.git"
+  ["cloud_enum"]="https://github.com/initstring/cloud_enum.git"
+  ["GitDorker"]="https://github.com/obheda12/GitDorker.git"
   ["robotScraper"]="https://github.com/robotshell/robotScraper.git"
   ["nuclei-templates"]="https://github.com/projectdiscovery/nuclei-templates.git"
-  ["SecLists"]="https://github.com/danielmiessler/SecLists"
+  ["SecLists"]="https://github.com/danielmiessler/SecLists.git"
   ["Corsy"]="https://github.com/s0md3v/Corsy.git"
   ["SecretFinder"]="https://github.com/m4ll0k/SecretFinder.git"
-  ["CMSeeK"]="https://github.com/Tuhinshubhra/CMSeeK"
+  ["CMSeeK"]="https://github.com/Tuhinshubhra/CMSeeK.git"
   ["findomain"]="https://github.com/findomain/findomain.git"
-  ["hacks"]="https://github.com/tomnomnom/hacks"
-  ["Bolt"]="https://github.com/s0md3v/Bolt"
-  ["Gf-Patterns"]="https://github.com/1ndianl33t/Gf-Patterns"
+  ["hacks"]="https://github.com/tomnomnom/hacks.git"
+  ["Bolt"]="https://github.com/s0md3v/Bolt.git"
+  ["Gf-Patterns"]="https://github.com/1ndianl33t/Gf-Patterns.git"
 )
 
 for repo in "${!REPOS[@]}"; do
@@ -49,7 +62,7 @@ for repo in "${!REPOS[@]}"; do
   cd ..
 done
 
-pip3 install arjun
+pip3 install arjun --break-system-packages
 
 printf "${CYAN}Building findomain\n${NORMAL}"
 cd findomain
@@ -94,9 +107,9 @@ echo 'source $GOPATH/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashr
 cp -r ~/go/src/github.com/tomnomnom/gf/examples ~/.gf
 
 printf "${CYAN}Installing MailSpoof\n${NORMAL}"
-sudo pip3 install mailspoof
+sudo pip3 install mailspoof --break-system-packages
 
 printf "${CYAN}Installing Shcheck\n${NORMAL}"
-git clone https://github.com/santoru/shcheck
+git clone https://github.com/santoru/shcheck.git
 
 printf "${BOLD}${YELLOW}Installation completed successfully!\n${NORMAL}"
